@@ -1,6 +1,6 @@
 part of 'config.dart';
 
-class ConfigProvider implements AsyncLifecycle {
+class ConfigProvider with AsyncLifecycle {
   //final _remoteConfig = FirebaseRemoteConfig.instance;
   final _configs = <String, _MockTypedConfig<Object>>{};
   late StreamSubscription<void> _subscription;

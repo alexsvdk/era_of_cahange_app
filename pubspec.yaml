@@ -49,6 +49,7 @@ dependencies:
   riverpod: ^2.6.1
   flutter_localizations:
     sdk: flutter
+  fresh_dio: ^0.4.3
 
 dev_dependencies:
   flutter_test:

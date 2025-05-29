@@ -14,7 +14,7 @@ part of 'debug_config.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$DebugConfig {
+mixin _$DebugConfig implements DiagnosticableTreeMixin {
 
  bool get enabled;
 /// Create a copy of DebugConfig
@@ -26,6 +26,12 @@ $DebugConfigCopyWith<DebugConfig> get copyWith => _$DebugConfigCopyWithImpl<Debu
   /// Serializes this DebugConfig to a JSON map.
   Map<String, dynamic> toJson();
 
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'DebugConfig'))
+    ..add(DiagnosticsProperty('enabled', enabled));
+}
 
 @override
 bool operator ==(Object other) {
@@ -37,7 +43,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,enabled);
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'DebugConfig(enabled: $enabled)';
 }
 
@@ -79,7 +85,7 @@ as bool,
 /// @nodoc
 @JsonSerializable()
 
-class _DebugConfig extends DebugConfig {
+class _DebugConfig extends DebugConfig with DiagnosticableTreeMixin {
   const _DebugConfig({required this.enabled}): super._();
   factory _DebugConfig.fromJson(Map<String, dynamic> json) => _$DebugConfigFromJson(json);
 
@@ -95,6 +101,12 @@ _$DebugConfigCopyWith<_DebugConfig> get copyWith => __$DebugConfigCopyWithImpl<_
 Map<String, dynamic> toJson() {
   return _$DebugConfigToJson(this, );
 }
+@override
+void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+  properties
+    ..add(DiagnosticsProperty('type', 'DebugConfig'))
+    ..add(DiagnosticsProperty('enabled', enabled));
+}
 
 @override
 bool operator ==(Object other) {
@@ -106,7 +118,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,enabled);
 
 @override
-String toString() {
+String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
   return 'DebugConfig(enabled: $enabled)';
 }
 

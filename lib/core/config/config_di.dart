@@ -9,11 +9,9 @@ import 'models/network_config.dart';
 final class ConfigDi {
   ConfigDi._();
 
-  static final _configProvider = Provider((ref){
-    final res = ConfigProvider();
-    res.attach(ref);
-    return res;
-  });
+      static final _configProvider = AsyncLifecycleProvider(
+    (_) => ConfigProvider(),
+  );
 
   static final network = StateNotifierProvider((ref) {
     final configProvider = ref.watch(_configProvider);
@@ -41,5 +39,4 @@ final class ConfigDi {
       mapper: DebugConfig.fromJson,
     );
   });
-
 }
