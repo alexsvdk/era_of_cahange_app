@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import '../../arch/async_lifecycle.dart';
-import '../../dao/domain/auth_user_dao.dart';
+import '../../dao/daos/auth_user_dao.dart';
 import '../models/auth_user.dart';
 import 'auth_user_holder.dart';
 

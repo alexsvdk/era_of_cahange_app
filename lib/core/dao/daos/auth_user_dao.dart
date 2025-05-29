@@ -1,9 +1,9 @@
 import 'package:hive_ce_flutter/hive_flutter.dart';
 
 import '../../arch/async_lifecycle.dart';
-import 'hive_provider.dart';
+import '../domain/hive_provider.dart';
 import '../../auth/models/auth_user.dart';
-import '../daos/base_dao.dart';
+import 'base_dao.dart';
 
 class AuthUserDao with AsyncLifecycle implements BaseDao {
   final HiveProvider _hiveProvider;

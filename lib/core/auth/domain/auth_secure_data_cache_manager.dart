@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import '../../arch/async_lifecycle.dart';
-import '../../dao/domain/auth_user_dao.dart';
+import '../../dao/daos/auth_user_dao.dart';
 import '../data/auth_cache.dart';
 import '../models/auth_secure_data.dart';
 import 'auth_secure_data_holder.dart';

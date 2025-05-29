@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../arch/async_lifecycle.dart';
-import 'domain/auth_user_dao.dart';
+import 'daos/auth_user_dao.dart';
 import 'domain/dao_cleaner.dart';
 import 'domain/hive_provider.dart';
 
