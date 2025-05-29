@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../auth/auth_di.dart';
 import '../config/config_di.dart';
 import '../info/info_di.dart';
 import 'domain/dio_accept_language_interceptor.dart';
@@ -32,9 +33,12 @@ final class NetworkDi {
   );
 
   /// A dio with authentication
-  static final authDio = Provider(
-    (ref) => ref
-        .watch(_dioFactory)
-        .createRawDio(config: ref.watch(ConfigDi.network)),
-  );
+  static final authDio = Provider((ref) {
+    final authInterceptorFactory = ref.watch(AuthDi.authInterceptorFactory);
+    final dioFactory = ref.watch(_dioFactory);
+    return dioFactory.createAuthificatedDio(
+      authInterceptorFactory: authInterceptorFactory,
+      networkConfig: ref.watch(ConfigDi.network),
+    );
+  });
 }

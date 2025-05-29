@@ -1,76 +1,60 @@
-import 'package:aiacademy_app/core/auth/domain/user_holder.dart';
-import 'package:aiacademy_app/core/di/user_scope.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:rxdart/rxdart.dart';
-
-import '../../api/users/models/user_sign_in_request.dart';
-import '../../api/users/models/users_sign_up_request.dart';
-import '../../api/users/users_unauthorized_api.dart';
+import '../data/auth_api.dart';
+import '../models/auth_credentials.dart';
+import '../models/auth_secure_data.dart';
 import '../models/auth_token.dart';
 import 'auth_secure_data_holder.dart';
+import 'auth_user_holder.dart';
 
 class AuthManager {
-  final TokensApi _api;
-  final AuthTokenHolder _authTokenHolder;
-  final UserHolder _userHolder;
-  final UserScopeHolder _userScopeHolder;
+  final AuthApi _api;
+  final AuthSecureDataHolder _secureDataHolder;
+  final AuthUserHolder _userHolder;
 
   AuthManager(
     this._api,
-    this._authTokenHolder,
+    this._secureDataHolder,
     this._userHolder,
-    this._userScopeHolder,
   );
 
-  Future<void> signIn(UserSignInRequest request) async {
-    final response = await _api.signIn(request);
+  Future<void> signIn(AuthCredentials request) async {
+    final response = await _api.login(request);
     final authToken = AuthToken(
-      accessToken: response.token,
-      refreshToken: response.refreshToken,
-      accessTokenExp: DateTime.now().add(Duration(seconds: response.expiresIn)),
+      accessToken: response.token.accessToken,
+      expiresAt: response.token.expiresAt,
     );
-    _authTokenHolder.setToken(
-      token: authToken,
-      source: AuthTokenHolderSetTokenSource.authManagerSignIn,
+    _secureDataHolder.setData(
+      data: AuthSecureData(token: authToken, credentials: request),
+      source: AuthSecureDataHolderSetTokenSource.authManagerSignIn,
     );
-    _userHolder.setUser(user: response.resourceOwner);
-    if (_userScopeHolder.scope == null) {
-      await _userScopeHolder.stream.whereNotNull().first;
-    }
 
-    FirebaseAnalytics.instance.logLogin(loginMethod: 'email');
+    // FirebaseAnalytics.instance.logLogin(loginMethod: 'email');
   }
 
-  Future<void> signUp(UserSignUpRequest request) async {
-    final response = await _api.signUp(request);
+  Future<void> signUp(AuthCredentials request) async {
+    final response = await _api.register(request);
     final authToken = AuthToken(
-      accessToken: response.token,
-      refreshToken: response.refreshToken,
-      accessTokenExp: DateTime.now().add(Duration(seconds: response.expiresIn)),
+      accessToken: response.token.accessToken,
+      expiresAt: response.token.expiresAt,
     );
-    _authTokenHolder.setToken(
-      token: authToken,
-      source: AuthTokenHolderSetTokenSource.authManagerSignUp,
+    _secureDataHolder.setData(
+      data: AuthSecureData(token: authToken, credentials: request),
+      source: AuthSecureDataHolderSetTokenSource.authManagerSignUp,
     );
-    _userHolder.setUser(user: response.resourceOwner);
-    if (_userScopeHolder.scope == null) {
-      await _userScopeHolder.stream.whereNotNull().first;
-    }
 
-    FirebaseAnalytics.instance.logSignUp(signUpMethod: 'email');
+    // FirebaseAnalytics.instance.logSignUp(signUpMethod: 'email');
   }
 
   void signOut() {
-    final token = _authTokenHolder.state;
-    if (token == null) return;
+    final secureData = _secureDataHolder.state;
+    if (secureData == null) return;
 
-    _authTokenHolder.setToken(
-      token: null,
-      source: AuthTokenHolderSetTokenSource.authManagerSignOut,
+    _secureDataHolder.setData(
+      data: null,
+      source: AuthSecureDataHolderSetTokenSource.authManagerSignOut,
     );
     _userHolder.setUser(user: null);
-    _api.revoke(token.accessToken);
+    //_api.revoke(secureData.token.accessToken);
 
-    FirebaseAnalytics.instance.logEvent(name: 'sign_out');
+    // FirebaseAnalytics.instance.logEvent(name: 'sign_out');
   }
 }

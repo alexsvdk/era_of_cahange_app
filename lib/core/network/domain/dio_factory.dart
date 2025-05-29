@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
 
+import '../../auth/domain/auth_dio_interceptor.dart';
 import '../../config/models/network_config.dart';
 import 'dio_accept_language_interceptor.dart';
 import 'dio_user_agent_interceptor.dart';
@@ -63,13 +64,12 @@ class DioFactory {
     return dio;
   }
 
-  /*
   Dio createAuthificatedDio({
     required DioAuthInterceptorFactory authInterceptorFactory,
     required NetworkConfig networkConfig,
   }) {
-    final rawDio = createRawDio(networkConfig);
-    final newDio = createRawDio(networkConfig);
+    final rawDio = createRawDio(config: networkConfig);
+    final newDio = createRawDio(config: networkConfig);
 
     newDio.interceptors.add(
       authInterceptorFactory.createAuthInterceptor(rawDio: rawDio),
@@ -77,5 +77,4 @@ class DioFactory {
 
     return newDio;
   }
-  */
 }
