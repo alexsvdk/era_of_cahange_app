@@ -1,0 +1,78 @@
+{
+    "@@locale": "ru",
+    "auth": {
+        "aggreement(interface=UserAgreement)": {
+            "sign_in(rich)": "Авторизуясь, вы соглашаетесь с нашей ${onPrivacyPolicy(Политикой конфиденциальности)} и ${onTermsOfService(Условиями использования)}.",
+            "sign_up(rich)": "Регистрируясь, вы соглашаетесь с нашей ${onPrivacyPolicy(Политикой конфиденциальности)} и ${onTermsOfService(Условиями использования)}.",
+            "subscribing(rich)": "Подписываясь, вы принимаете нашу ${onPrivacyPolicy(Политику конфиденциальности)} и ${onTermsOfService(Условия использования)}."
+        },
+        "sign_in_screen": {
+            "title": "Вход",
+            "subtitle": "Введите данные для входа",
+            "@email": "Email input field hint",
+            "email": "Электронная почта",
+            "@password": "Password input field hint",
+            "password": "Пароль",
+            "@login": "Sign In button text",
+            "login": "Войти",
+            "@forgot_password": "Forgot Password button text",
+            "forgot_password": "Забыли пароль?",
+            "dont_have_account": "Нет учетной записи?",
+            "@sign_up": "Sign Up button text",
+            "sign_up": "Зарегистрироваться"
+        },
+        "sign_up_screen": {
+            "title": "Регистрация",
+            "subtitle": "Введите данные для регистрации",
+            "email": "@:auth.signInScreen.email",
+            "password": "@:auth.signInScreen.password",
+            "confirm_password": "Подтвердите пароль",
+            "@create_account": "Create Account button text",
+            "create_account": "Создать аккаунт",
+            "already_have_account": "У вас уже есть аккаунт?",
+            "@sign_in": "Sign In button text",
+            "sign_in": "Войти"
+        },
+        "error": {
+            "email": {
+                "invalid": "Неверный адрес электронной почты",
+                "required": "Необходимо указать адрес электронной почты"
+            },
+            "password": {
+                "required": "Необходимо ввести пароль",
+                "min_length": "Пароль должен содержать не менее 8 символов"
+            },
+            "confirm_password": {
+                "required": "Необходимо подтвердить пароль",
+                "not_match": "Пароли не совпадают"
+            }
+        },
+        "exit_dialog": {
+            "title": "Выход",
+            "body": "Вы уверены, что хотите выйти?",
+            "cancel": "Отмена",
+            "exit": "Выйти"
+        }
+    },
+    "email": {
+        "confirmation_screen": {
+            "title": "Подтверждение Email",
+            "body(rich)": "Мы отправили письмо на указанный адрес ${email}. Пожалуйста, проверьте почту и перейдите по ссылке, чтобы подтвердить адрес.\n\nЕсли письмо не появилось во входящих, проверьте папку Спам или Нежелательная почта.",
+            "@resend_email": "Resend Email button text",
+            "resend_email": "Отправить ещё раз",
+            "wrong_email": "Неверный email?",
+            "sign_up": "@:auth.signInScreen.signUp"
+        },
+        "sign_up_confirmation_dialog": {
+            "title": "Подтвердить регистрацию",
+            "body": "Вы будете разлогинены и перенаправлены на экран регистрации."
+        }
+    },
+    "error": {
+        "request_cancelled": "Запрос был отменён",
+        "request_timeout": "Время ожидания запроса истекло",
+        "invalid_certificate": "Недействительный сертификат",
+        "connection_error": "Ошибка соединения",
+        "generic_error": "Произошла ошибка"
+    }
+}

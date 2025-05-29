@@ -1,0 +1,14 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          field_rename: snake
+          include_if_null: false
+      slang_build_runner:
+        options:
+          fallback_strategy: base_locale
+          key_case: camel
+          param_case: camel
+          timestamp: false
+          translation_class_visibility: public

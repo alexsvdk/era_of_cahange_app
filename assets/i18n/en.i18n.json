@@ -1,0 +1,82 @@
+{
+    "@@locale": "en",
+    "@auth": "Authentication flow related translations",
+    "auth": {
+        "aggreement(interface=UserAgreementTr)": {
+            "sign_in(rich)": "By signing in, you agree to our ${onPrivacyPolicy(Privacy Statement)} and ${onTermsOfService(Terms of Use)}.",
+            "sign_up(rich)": "By signing up, you agree to our ${onPrivacyPolicy(Privacy Statement)} and ${onTermsOfService(Terms of Use)}.",
+            "subscribing(rich)": "By subscribing, you accept our ${onPrivacyPolicy(Privacy Statement)} and ${onTermsOfService(Terms of Use)}."
+        },
+        "sign_in_screen": {
+            "title": "Login",
+            "subtitle": "Please sign in to continue",
+            "@email": "Email input field hint",
+            "email": "Email",
+            "@password": "Password input field hint",
+            "password": "Password",
+            "@login": "Sign In button text",
+            "login": "Login",
+            "@forgot_password": "Forgot Password button text",
+            "forgot_password": "Forgot Password?",
+            "dont_have_account": "Don't have an account?",
+            "@sign_up": "Sign Up button text",
+            "sign_up": "Sign Up"
+        },
+        "sign_up_screen": {
+            "title": "Sign Up",
+            "subtitle": "Please sign up to continue",
+            "email": "@:auth.signInScreen.email",
+            "password": "@:auth.signInScreen.password",
+            "confirm_password": "Confirm Password",
+            "@create_account": "Create Account button text",
+            "create_account": "Create Account",
+            "already_have_account": "Already have an account?",
+            "@sign_in": "Sign In button text",
+            "sign_in": "Sign In"
+        },
+        "@error": "Auth error messages",
+        "error": {
+            "email": {
+                "invalid": "Invalid email address",
+                "required": "Email is required"
+            },
+            "password": {
+                "required": "Password is required",
+                "min_length": "Password must be at least 8 characters long"
+            },
+            "confirm_password": {
+                "required": "Confirm password is required",
+                "not_match": "Passwords do not match"
+            }
+        },
+        "exit_dialog": {
+            "title": "Logout",
+            "body": "Are you sure you want to exit?",
+            "cancel": "Cancel",
+            "exit": "Logout"
+        }
+    },
+    "@email": "Email confirmation flow related translations",
+    "email": {
+        "confirmation_screen": {
+            "title": "Email confirmation",
+            "body(rich)": "We have sent an email to the specified address ${email}. Please check your inbox and click the link to confirm your email address.\n\nIf you do not see the email in your inbox, check your Spam or Junk folder.",
+            "@resend_email": "Resend Email button text",
+            "resend_email": "Resend Email",
+            "wrong_email": "Wrong email?",
+            "sign_up": "@:auth.signInScreen.signUp"
+        },
+        "sign_up_confirmation_dialog": {
+            "title": "Confirm Sign Up",
+            "body": "You will be logged out and redirected to the sign up screen."
+        }
+    },
+    "@error": "Error messages",
+    "error": {
+        "request_cancelled": "Request was cancelled",
+        "request_timeout": "Request timeout",
+        "invalid_certificate": "Invalid certificate",
+        "connection_error": "Connection error",
+        "generic_error": "An error occurred"
+    }
+}
